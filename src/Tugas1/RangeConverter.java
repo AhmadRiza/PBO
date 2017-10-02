@@ -17,6 +17,7 @@ public class RangeConverter {
      * @param n integer nilai yg akan dikonversi
      * @return fixed range (integer)
      */
+    protected int numb = 100;
     public double rangeSoal1(int n) {
 
         double scale = 1 / 100d;//skala = jarak baru / jarak akhir
@@ -105,6 +106,18 @@ public class RangeConverter {
         String result = String.valueOf( convertRange(startOldI, endOldI, startNewI, endNewI, nI) );
         
         return result;
+    }
+    
+    //int[] OverLoad
+    
+    public double[] convertRange(int startOld, int endOld,
+                               int startNew, int endNew,
+                               int[] n){
+        double[] res = new double[n.length];
+        for (int i = 0; i < n.length; i++) {
+            res[i] = convertRange(startOld, endOld, startNew, endNew, n[i]);
+        }
+        return res;
     }
     
 }
